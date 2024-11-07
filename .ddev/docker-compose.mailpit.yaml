@@ -1,0 +1,8 @@
+services:
+  mailpit:
+    container_name: ddev-${DDEV_SITENAME}-mailpit
+    image: 'axllent/mailpit:latest'
+    restart: unless-stopped
+    ports:
+      - '1025:1025'
+      - '8096:8025' 

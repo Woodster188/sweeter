@@ -1,0 +1,104 @@
+#ddev-generated
+# If you remove the ddev-generated line above you
+# are responsible for maintaining this file. DDEV will not then
+# update it, for example if you add `additional_hostnames`, etc.
+
+http:
+  routers:
+    kvk-group-backend-phpmyadmin-80-http:
+      entrypoints:
+        - http-8036
+      rule: HostRegexp(`^kvk-group-backend\.ddev\.site$`)
+      
+      service: "kvk-group-backend-phpmyadmin-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "kvk-group-backend-redirectHttps"
+    kvk-group-backend-web-80-http:
+      entrypoints:
+        - http-80
+      rule: HostRegexp(`^kvk-group-backend\.ddev\.site$`)
+      
+      service: "kvk-group-backend-web-80"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "kvk-group-backend-redirectHttps"
+    kvk-group-backend-web-8025-http:
+      entrypoints:
+        - http-8025
+      rule: HostRegexp(`^kvk-group-backend\.ddev\.site$`)
+      
+      service: "kvk-group-backend-web-8025"
+      ruleSyntax: v3
+      tls: false
+      # middlewares:
+      #   - "kvk-group-backend-redirectHttps"
+    
+    
+    kvk-group-backend-phpmyadmin-80-https:
+      entrypoints:
+        - http-8037
+      rule: HostRegexp(`^kvk-group-backend\.ddev\.site$`)
+      
+      service: "kvk-group-backend-phpmyadmin-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+    
+    kvk-group-backend-web-80-https:
+      entrypoints:
+        - http-443
+      rule: HostRegexp(`^kvk-group-backend\.ddev\.site$`)
+      
+      service: "kvk-group-backend-web-80"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    kvk-group-backend-web-8025-https:
+      entrypoints:
+        - http-8026
+      rule: HostRegexp(`^kvk-group-backend\.ddev\.site$`)
+      
+      service: "kvk-group-backend-web-8025"
+      ruleSyntax: v3
+      
+      tls: true
+      
+    
+
+  middlewares:
+    kvk-group-backend-redirectHttps:
+      redirectScheme:
+        scheme: https
+        permanent: true
+
+  services:
+    kvk-group-backend-phpmyadmin-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-kvk-group-backend-phpmyadmin:80
+        
+    
+    kvk-group-backend-web-80:
+      loadbalancer:
+        servers:
+          - url: http://ddev-kvk-group-backend-web:80
+        
+    kvk-group-backend-web-8025:
+      loadbalancer:
+        servers:
+          - url: http://ddev-kvk-group-backend-web:8025
+        
+    
+    
+    
+
+tls:
+  certificates:
+    - certFile: /mnt/ddev-global-cache/traefik/certs/kvk-group-backend.crt
+      keyFile: /mnt/ddev-global-cache/traefik/certs/kvk-group-backend.key
