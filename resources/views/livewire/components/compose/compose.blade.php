@@ -1,4 +1,7 @@
-<form class="border-b border-t border-gray-200 dark:border-dim-200 pb-4 border-l border-r">
+<form x-data="{
+    body: $wire.entangle('form.body'),
+    radius: 30
+}" class="border-b border-t border-gray-200 dark:border-dim-200 pb-4 border-l border-r">
     <div class="flex flex-shrink-0 pb-4 p-4">
         <div class="flex flex-shrink-0 p-4 pb-0">
             <img src="{{ auth()->user()->profile_photo_url }}"
@@ -36,13 +39,23 @@
                 />
             </label>
         </div>
-
+        <div class="w-10 h10 relative" >
+            <svg class="transform -rotate-90" viewbox="0 0 120 120">
+                <circle
+                    cx="60"
+                    cy="60"
+                    fill="none"
+                    stroke-width="8"
+                    class="stroke-current text-gray-700"
+                    :r="30" >
+            </svg>
+        </div>
         <button
             type="submit"
             href="#"
             class="bg-blue-400 hover:bg-blue-500 text-white rounded-full py-1 px-4 ml-auto mr-1"
         >
-            <span class="font-bold text-sm">Switt</span>
+            <span class="font-bold text-sm">Swiewett</span>
         </button>
     </div>
 </form>
