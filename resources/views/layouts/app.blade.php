@@ -19,12 +19,13 @@
     </head>
     <body class="bg-white dark:bg-dim-900">
 
-    <div class="container mx-auto h-screen flex">
-        <livewire:components.sidebar/>
-        <div class="flex flex-row justify-center">
-            {{ $slot }}
+        <div class="container mx-auto h-screen flex">
+            <livewire:components.sidebar />
+
+            <div class="flex flex-row justify-center">
+                {{ $slot }}
+            </div>
         </div>
-    </div>
-    @livewireScriptConfig
+        @livewireScriptConfig
     </body>
 </html>
